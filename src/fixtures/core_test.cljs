@@ -9,16 +9,7 @@
 
 (nodejs/enable-util-print!)
 
-(def counter (atom 0))
-
-(defn inc-counter [f]
-  (swap! counter inc)
-  (f))
-
-(use-fixtures :once inc-counter schema.test/validate-schemas)
-
-(deftest fixture
-  (is (= 1 @counter)))
+(use-fixtures :once schema.test/validate-schemas)
 
 (deftest other-test
   (is true))
@@ -29,5 +20,3 @@
 
 (deftest schema-test
   (is (= 4 (square "A"))))
-
-;; (set! *main-cli-fn* (fn [] (run-tests 'fixtures.core-test)))
