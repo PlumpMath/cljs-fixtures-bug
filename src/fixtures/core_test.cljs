@@ -7,8 +7,9 @@
 
 (def counter (atom 0))
 
-(defn inc-counter [& args]
-  (swap! counter inc))
+(defn inc-counter [f]
+  (swap! counter inc)
+  (f))
 
 (use-fixtures :once inc-counter)
 
